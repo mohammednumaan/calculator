@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+}
+
+
+.screen-container{
+    width: 300px;
+    height: 60px;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 600px;
+    background-color: orange;
+    color: white;
+
+    
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;
+    margin-top: 20px;
+    margin-right: 30px;
+}
+
+.previousDisplay {
+    margin-bottom: 50px;
+    border: 2px solid black;
+    width: 100px;
+    height: 20px;
+}
+
