@@ -1,7 +1,13 @@
+/* body */
+
 body{
     margin: 0;
     background-color:#93c47d;
 }
+
+
+/* header */
+
 
 .header{
     background-color:#38761d;
@@ -11,9 +17,14 @@ body{
     min-height: 100px;
 }
 
+
 .header-img{
     height: 50px;
 }
+
+
+
+/* screen */
 
 .screen-container{
     width: 248px;
@@ -28,6 +39,7 @@ body{
     
 }
 
+
 .currentDisplay {
     margin-top: 30px;
     display: flex;
@@ -40,6 +52,7 @@ body{
 
 }   
 
+
 .previousDisplay {
     display: flex;
     flex-direction: column;
@@ -51,9 +64,12 @@ body{
     margin-top: -48px;
     color: black;
     color: green;
-
+    position: fixed;
 }
 
+
+
+/* buttons */
 
 .all-buttons{
     margin-left: 620px;
@@ -65,10 +81,8 @@ body{
     gap: 20px;
 }
 
-#equal-to,
-#back-button{
-    width: 125px;
-}
+
+
 button{
     width: 60px;
     height: 50px; 
@@ -76,6 +90,31 @@ button{
     box-shadow: 8px 8px 0px #38761d; 
 }
 
+
 button:hover {
     background-color: lavender;
+}
+
+
+#equal-to,
+#back-button{
+    width: 125px;
+}
+
+
+/* message */
+
+.note{
+    border: 2px solid #38761d;
+    box-shadow: 8px 8px 0px #38761d; 
+    margin-top: 30px;
+    width: 500px;
+    padding: 10px;
+    margin-left: -125px;
+    color: green;
+}
+
+
+.quick-find{
+    margin-left: 8px;
 }

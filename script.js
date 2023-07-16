@@ -170,7 +170,7 @@ function mul(x,y){
 
 function div(x,y){
     if (y === 0) {
-        alert('Error : Cannot Divide By 0!')
+        alert("Error : Cannot Divide By 0! Please click the 'C' button!")
     }
     else{
         return x / y;
@@ -202,17 +202,13 @@ function clearScreen(){
 function backSpace(){
     if (currentOperator === null){
         firstNumber = firstNumber.toString().slice(0,-1)
-        currentDisplayScreen.innerHTML = firstNumber
+        currentDisplayScreen.innerHTML = firstNumber  
     }
     else if (currentOperator !== null){
         secondNumber = secondNumber.toString().slice(0,-1)
-        firstNumber = firstNumber.toString().slice(0,-1)
-
-        currentDisplayScreen.innerHTML = secondNumber
-        currentDisplayScreen.innerHTML = firstNumber
+        currentDisplayScreen.textContent = secondNumber 
     }
 }
-
 
 
 // decimal point
@@ -247,6 +243,6 @@ function handleKeyboardInput(e){
         decimalPoint()
     }
     if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' ){
-        displayOperatorOnScreen()
+        displayOperatorOnScreen(e.key)
     }
 }
