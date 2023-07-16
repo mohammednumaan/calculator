@@ -11,6 +11,7 @@ The main objective is to create a simple calculator that can perform simple oper
   <li> A simple SPA Design.</li>
   <li> Ability to perform simple operations, <b>for example : 1 + 1 = 2</b></li>
   <li> Ability to perform complex and chained operations, <b>for example : 12 + 7 - 5 * 3 = 42</b></li>
+  <li> Ability yo perform flaoting-points operations (complex/chained and simple).</li>
   <li> Ability to use keyboard inputs to perform calculations.</li>
   <li> Misc : DOM Manipulation Concepts and Flexbox concepts have been implemented highly in this project.</li>
 </ul>
