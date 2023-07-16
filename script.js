@@ -23,6 +23,9 @@ let result = 0;
 // buttons and event listners
 
 
+window.addEventListener('keydown', handleKeyboardInput)
+
+
 numberButtons.forEach(numberBtn => numberBtn.addEventListener('click', () => {
     displayNumberOnScreen(numberBtn.textContent)
 }))
@@ -37,6 +40,7 @@ operatorButtons.forEach(operatorBtn => operatorBtn.addEventListener('click', () 
 
 equalToOperator.addEventListener('click', () => {
     calculate()
+
 
 
 })
@@ -54,11 +58,7 @@ backspaceButton.addEventListener('click', () => {
 
 decimalButton.addEventListener('click', () => {
     decimalPoint()
-    if (!secondNumber.includes(".") ){
-        secondNumber += "."
-    }
 })
-
 
 
 
@@ -99,6 +99,8 @@ function displayOperatorOnScreen(operator){
 function calculate(){
     currentDisplayScreen.textContent = round(operate(currentOperator,firstNumber,secondNumber))
     previousDisplayScreen.textContent = currentDisplayScreen.textContent
+
+ 
 }
 
 
@@ -106,9 +108,9 @@ function calculate(){
 
 
 function operate(operator, x, y ){
-    x = Number(x)
-    y = Number(y)
-    result = Number(result)
+    x = parseFloat(x)
+    y = parseFloat(y)
+    result = parseFloat(result)
     switch(operator) {
 
         case '+' :
@@ -135,6 +137,7 @@ function operate(operator, x, y ){
             secondNumber = ''
             return result   
     }
+   
 }
 
 
@@ -166,7 +169,12 @@ function mul(x,y){
 // division
 
 function div(x,y){
-    return x / y;
+    if (y === 0) {
+        alert('Error : Cannot Divide By 0!')
+    }
+    else{
+        return x / y;
+    }
 }
 
 
@@ -181,8 +189,8 @@ function round(operation){
 // clear screen
 
 function clearScreen(){
-    currentDisplayScreen.textContent = ''
-    previousDisplayScreen.textContent = ''
+    currentDisplayScreen.textContent = 0
+    previousDisplayScreen.textContent = 0
     firstNumber = ''
     secondNumber = ''
     currentOperator = null
@@ -192,16 +200,17 @@ function clearScreen(){
 // backspace
 
 function backSpace(){
-    if (currentOperator == null){
-        firstNumber = firstNumber.toString().slice(0, -1)
-        currentDisplayScreen.textContent = firstNumber
+    if (currentOperator === null){
+        firstNumber = firstNumber.toString().slice(0,-1)
+        currentDisplayScreen.innerHTML = firstNumber
     }
     else if (currentOperator !== null){
-        secondNumber = secondNumber.toString().slice(0, -1)
-        currentDisplayScreen.textContent = secondNumber
-    }
+        secondNumber = secondNumber.toString().slice(0,-1)
+        firstNumber = firstNumber.toString().slice(0,-1)
 
-    
+        currentDisplayScreen.innerHTML = secondNumber
+        currentDisplayScreen.innerHTML = firstNumber
+    }
 }
 
 
@@ -209,7 +218,35 @@ function backSpace(){
 // decimal point
 
 function decimalPoint(){
-    if (!firstNumber.includes(".")){
-        firstNumber += "."
+    if (currentOperator === null){
+        if (!firstNumber.includes('.')){
+            firstNumber += '.'
+        }   
+    }
+    else if ( currentOperator !== null){
+        if (!secondNumber.includes('.')){
+            secondNumber += '.'
+        }
+    }
+}
+
+
+// handle keyboard input
+
+function handleKeyboardInput(e){
+    if (e.key >= 0 && e.key <= 9){
+        displayNumberOnScreen(e.key)
+    }
+    if (e.key === '=' || e.key === 'Enter'){
+        calculate()
+    }
+    if (e.key === 'Backspace'){
+        backSpace()
+    }
+    if (e.key === '.'){
+        decimalPoint()
+    }
+    if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' ){
+        displayOperatorOnScreen()
     }
 }
