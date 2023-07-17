@@ -8,7 +8,7 @@ The main objective is to create a simple calculator that can perform simple oper
 
 # Implementations
 <ul>
-  <li> A simple SPA Design.</li>
+  <li> A simple Webpage.</li>
   <li> Ability to perform simple operations, <b>for example : 1 + 1 = 2</b></li>
   <li> Ability to perform complex and chained operations, <b>for example : 12 + 7 - 5 * 3 = 42</b></li>
   <li> Ability to perform floating-point operations (complex/chained and simple).</li>
