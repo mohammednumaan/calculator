@@ -20,7 +20,7 @@ The main objective is to create a simple calculator that can perform simple oper
 
 This is a concept-map for the logic behind storing the user input based on simple and chained operations. (Note this is just a simplified map, certain things have not been mapped as it might be easier to understand by looking through the codebase.)
 
-![calculator Concept Map](https://github.com/mohammednumaan/calculator/assets/138296610/4682d063-e2f4-40d9-9117-e58c5d5b73de)
+![calculator](https://github.com/mohammednumaan/calculator/assets/138296610/4308124c-d95a-4be9-b344-9804565458c6)
 
 
 # Features To Implement In the Future
