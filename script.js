@@ -208,7 +208,7 @@ function round(operation){
 function clearScreen(){
 
     currentDisplayScreen.textContent = 0
-    previousDisplayScreen.textContent = 0
+    previousDisplayScreen.textContent = ''
     firstNumber = ''
     secondNumber = ''
     result = 0;
