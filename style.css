@@ -33,7 +33,7 @@ body{
 /* screen */
 
 .screen-container{
-    width: 248px;
+    width: 260px;
     height: 60px;
     border: 3px solid #38761d;
     margin-top: 100px;
@@ -96,6 +96,19 @@ button{
     color: #38761d;
 }
 
+.additional-buttons,
+.sevenEightNine-container,
+.fourFiveSix-container,
+.oneTwoThree-container,
+.misc{
+    width: 300px;
+}
+
+.back-button,
+.equal-to{
+    width: 133px;
+}
+
 
 button:hover {
     background-color: lavender;
@@ -104,7 +117,7 @@ button:hover {
 
 #equal-to,
 #back-button{
-    width: 125px;
+    width: 90px;
 }
 
 
