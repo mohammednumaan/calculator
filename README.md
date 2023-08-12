@@ -41,8 +41,6 @@ This is a concept-map for the logic behind storing the user input based on simpl
 # Known Issues/Bugs
 
 <ul>
-  <li>The Backspace functionality has minor issues, it works for the most part but does not work as desired when the user tries to delete the operator in order to use another aritmetic operator. (i hope it makes sense).</li>
-  <li>If the user divides a number by zero (0), it alerts a message displaying 'Error', the user needs to make sure to clear the screen using the 'C' button before proceeding to perform an operation or else it will display NaN and return NaN even if u enter a few numbers. (i hope this makes sense as well)</li>
-  <li> Note : Will re-visit this project soon to fix these minor issues/bugs.</li>
+<li>All issues stated earlier were fixed :)</li>
 </ul>
 
