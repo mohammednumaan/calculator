@@ -1,8 +1,14 @@
 /* body */
 
+@font-face {
+    font-family: pixel;
+    src: url('./assets/pixel.ttf');
+}
+
 body{
     margin: 0;
     background-color:#93c47d;
+    font-family: pixel;
 }
 
 
@@ -35,6 +41,7 @@ body{
     background-color: white;
     color: #38761d;
     box-shadow: 8px 8px 0px #38761d; 
+    padding-left: 10px;
 
     
 }
@@ -44,27 +51,23 @@ body{
     margin-top: 30px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
-    margin-left: 237px;
     color: green;
     font-size: 25px;
+    height: 24.8px;
 
 }   
 
 
 .previousDisplay {
+
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-end;
     width: 100px;
     height: 20px;
-    margin-left: 145px;
     margin-top: -48px;
     color: black;
     color: green;
-    position: fixed;
+    
 }
 
 
@@ -79,8 +82,8 @@ body{
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
 
+}
 
 
 button{
@@ -88,6 +91,9 @@ button{
     height: 50px; 
     border: 2px solid #38761d;  
     box-shadow: 8px 8px 0px #38761d; 
+    font-family: pixel;
+    font-weight: 800;
+    color: #38761d;
 }
 
 

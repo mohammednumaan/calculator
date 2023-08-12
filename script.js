@@ -2,46 +2,42 @@
 
 const currentDisplayScreen = document.querySelector(".currentDisplay")
 const previousDisplayScreen = document.querySelector(".previousDisplay")
-const numberButtons = document.querySelectorAll("#number")
-const operatorButtons = document.querySelectorAll("#operator")
-const equalToOperator = document.querySelector("#equal-to")
-const clearButton = document.querySelector("#clear")
-const backspaceButton = document.querySelector("#back-button")
-const decimalButton = document.querySelector("#decimal-point")
+const numberButtons = document.querySelectorAll(".number")
+const operatorButtons = document.querySelectorAll(".operator")
+const equalToOperator = document.querySelector(".equal-to")
+const clearButton = document.querySelector(".clear")
+const backspaceButton = document.querySelector(".back-button")
+const decimalButton = document.querySelector(".decimal-point")
 
 
 
 // declaring variables
 
 currentDisplayScreen.textContent = 0
+previousDisplayScreen.textContent = 0
 let firstNumber = ''
 let secondNumber = ''
-let currentOperator = null;
-let result = 0;
+let currentOperator = '';
+let result = '';
 
 
 // buttons and event listners
-
 
 window.addEventListener('keydown', handleKeyboardInput)
 
 
 numberButtons.forEach(numberBtn => numberBtn.addEventListener('click', () => {
-    displayNumberOnScreen(numberBtn.textContent)
+    numbers(numberBtn.id)
 }))
 
 
 operatorButtons.forEach(operatorBtn => operatorBtn.addEventListener('click', () => {
-    displayOperatorOnScreen(operatorBtn.textContent)
-    previousDisplayScreen.textContent = firstNumber + '' + currentOperator
-    
+    operator(operatorBtn.textContent)
   
 }))
 
 equalToOperator.addEventListener('click', () => {
     calculate()
-
-
 
 })
 
@@ -64,43 +60,57 @@ decimalButton.addEventListener('click', () => {
 
 // number function
 
-function displayNumberOnScreen(number){
-    
-    if (currentOperator == null && firstNumber.length <=7){
+function numbers(number){
+
+    firstNumber = firstNumber.toString()
+
+    if (currentOperator === '' && firstNumber.length <= 7){
         currentDisplayScreen.textContent = ''
         firstNumber += number;
-        currentDisplayScreen.innerHTML = firstNumber;
-        console.log(firstNumber)
+        currentDisplayScreen.textContent += firstNumber;
+        previousDisplayScreen.textContent = firstNumber 
+
     }
-    else if (currentOperator !== null && secondNumber.length <= 7){
+    else if (currentOperator !== '' && secondNumber.length <= 7){
         secondNumber += number;
-        currentDisplayScreen.innerHTML = secondNumber;
-        console.log(secondNumber)
+        currentDisplayScreen.textContent = secondNumber;
+        previousDisplayScreen.textContent = secondNumber
+        previousDisplayScreen.textContent = firstNumber + currentOperator + secondNumber
+
     }
+    
 }
 
 
 
 // operator function
 
-function displayOperatorOnScreen(operator){
- 
-    if (firstNumber !== '' && secondNumber !== '' && currentOperator !== null){
+function operator(operator){
+
+    if (secondNumber !== ''){
         calculate()
     }
+
     currentOperator = operator
-    previousDisplayScreen.innerHTML += currentOperator
-    console.log(currentOperator)  
+    previousDisplayScreen.textContent += currentOperator
+    currentDisplayScreen.textContent += currentOperator
+
 }
 
 
 // return calculation
 
 function calculate(){
-    currentDisplayScreen.textContent = round(operate(currentOperator,firstNumber,secondNumber))
-    previousDisplayScreen.textContent = currentDisplayScreen.textContent
 
- 
+    if (currentOperator !== ''){
+        currentDisplayScreen.textContent = round(operate(currentOperator,firstNumber,secondNumber))
+  
+      
+    }
+    else{
+        return;
+    }
+
 }
 
 
@@ -117,25 +127,29 @@ function operate(operator, x, y ){
              result = add(x,y)
              firstNumber = result
              secondNumber = ''
-             return result;
+             currentOperator = '';
+             return firstNumber;
 
         case '-' :
             result = sub(x,y)
             firstNumber = result
             secondNumber = ''
-            return result
+            currentOperator = '';
+            return firstNumber;
             
         case '*' :
             result = mul(x,y)
             firstNumber = result
             secondNumber = ''
-            return result
+            currentOperator = '';
+            return firstNumber;
 
         case '/' :
             result = div(x,y)
             firstNumber = result
             secondNumber = ''
-            return result   
+            currentOperator = '';
+            return firstNumber;  
     }
    
 }
@@ -170,7 +184,10 @@ function mul(x,y){
 
 function div(x,y){
     if (y === 0) {
-        alert("Error : Cannot Divide By 0! Please click the 'C' button!")
+        alert("Error : Cannot Divide By 0!")
+        clearScreen()
+        return x , y
+    
     }
     else{
         return x / y;
@@ -189,37 +206,44 @@ function round(operation){
 // clear screen
 
 function clearScreen(){
+
     currentDisplayScreen.textContent = 0
     previousDisplayScreen.textContent = 0
     firstNumber = ''
     secondNumber = ''
-    currentOperator = null
+    result = 0;
+    currentOperator = ''
 }
 
 
 // backspace
 
 function backSpace(){
-    if (currentOperator === null){
+
+    if (currentOperator === ''){
         firstNumber = firstNumber.toString().slice(0,-1)
-        currentDisplayScreen.innerHTML = firstNumber  
+        currentDisplayScreen.textContent = firstNumber
     }
-    else if (currentOperator !== null){
+    else if (currentOperator !== '' && secondNumber !== ''){
         secondNumber = secondNumber.toString().slice(0,-1)
         currentDisplayScreen.textContent = secondNumber 
+
     }
+    previousDisplayScreen.textContent = firstNumber + currentOperator + secondNumber
+
+
 }
 
 
 // decimal point
 
 function decimalPoint(){
-    if (currentOperator === null){
+    if (currentOperator === ''){
         if (!firstNumber.includes('.')){
             firstNumber += '.'
         }   
     }
-    else if ( currentOperator !== null){
+    else if ( currentOperator !== ''){
         if (!secondNumber.includes('.')){
             secondNumber += '.'
         }
@@ -231,7 +255,7 @@ function decimalPoint(){
 
 function handleKeyboardInput(e){
     if (e.key >= 0 && e.key <= 9){
-        displayNumberOnScreen(e.key)
+        numbers(e.key)
     }
     if (e.key === '=' || e.key === 'Enter'){
         calculate()
@@ -243,6 +267,6 @@ function handleKeyboardInput(e){
         decimalPoint()
     }
     if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/' ){
-        displayOperatorOnScreen(e.key)
+        operator(e.key)
     }
 }
