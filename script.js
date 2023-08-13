@@ -75,7 +75,7 @@ function numbers(number){
         secondNumber += number;
         currentDisplayScreen.textContent = secondNumber;
         previousDisplayScreen.textContent = secondNumber
-        previousDisplayScreen.textContent = firstNumber + currentOperator + secondNumber
+        previousDisplayScreen.textContent = round(firstNumber) + currentOperator + round(secondNumber)
 
     }
     
@@ -104,8 +104,7 @@ function calculate(){
 
     if (currentOperator !== ''){
         currentDisplayScreen.textContent = round(operate(currentOperator,firstNumber,secondNumber))
-  
-      
+        
     }
     else{
         return;
@@ -238,6 +237,8 @@ function backSpace(){
 // decimal point
 
 function decimalPoint(){
+
+    firstNumber = firstNumber.toString()
     if (currentOperator === ''){
         if (!firstNumber.includes('.')){
             firstNumber += '.'
