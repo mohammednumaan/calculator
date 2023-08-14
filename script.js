@@ -221,11 +221,11 @@ function backSpace(){
 
     if (currentOperator === ''){
         firstNumber = firstNumber.toString().slice(0,-1)
-        currentDisplayScreen.textContent = firstNumber
+        currentDisplayScreen.textContent = round(firstNumber)
     }
     else if (currentOperator !== '' && secondNumber !== ''){
         secondNumber = secondNumber.toString().slice(0,-1)
-        currentDisplayScreen.textContent = secondNumber 
+        currentDisplayScreen.textContent = round(secondNumber) 
 
     }
     previousDisplayScreen.textContent = firstNumber + currentOperator + secondNumber
